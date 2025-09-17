@@ -71,6 +71,7 @@
       <End Role="Product" EntitySet="Product" />
       <End Role="TblOrder" EntitySet="TblOrder" />
     </AssociationSet>
+    <EntitySet Name="SORUMLU" EntityType="DbProjectModel.SORUMLU" />
   </EntityContainer>
   <EntityType Name="TblOrder">
     <Key>
@@ -109,4 +110,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="SORUMLU">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

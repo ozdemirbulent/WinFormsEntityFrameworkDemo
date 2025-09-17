@@ -209,12 +209,12 @@ namespace EntityProject
             LblMostOrderedCity.Text = mostOrderCustomerCity.ToString();
 
 
-            var leastOrderProduct =  (from o in db.Product
-                                    join p in db.TblOrder
-                                    on o.ProductId equals p.ProductId
-                                    group o by o.ProductName into g
-                                    orderby g.Count() ascending
-                                    select g.Key).FirstOrDefault();
+            var leastOrderProduct = (from o in db.Product
+                                     join p in db.TblOrder
+                                     on o.ProductId equals p.ProductId
+                                     group o by o.ProductName into g
+                                     orderby g.Count() ascending
+                                     select g.Key).FirstOrDefault();
 
             LblLeastOrderedProduct.Text = leastOrderProduct.ToString();
         }

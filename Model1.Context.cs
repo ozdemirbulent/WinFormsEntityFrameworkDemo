@@ -30,5 +30,6 @@ namespace EntityProject
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TblOrder> TblOrder { get; set; }
+        public virtual DbSet<SORUMLU> SORUMLU { get; set; }
     }
 }
