@@ -18,6 +18,19 @@ namespace Project1_AdonetPCustomer
             InitializeComponent();
         }
 
+        public void Clear()
+        {
+            txtname.Text = "";
+            txtpassword.Text = "";
+            textBox1.Text = "";
+            txtname.Focus();
+        }
+
+
+
+
+
+
         // Rastgele doğrulama kodu üretir
         public string RandomStringNumber(int length)
         {
@@ -36,7 +49,7 @@ namespace Project1_AdonetPCustomer
 
         private void Yönetici_Load(object sender, EventArgs e)
         {
-
+            Clear();
             label5.Text = RandomStringNumber(5);
 
 
@@ -78,8 +91,8 @@ namespace Project1_AdonetPCustomer
             else
             {
                 textBox1.BackColor = Color.LightGreen;
-                MessageBox.Show("Giriş Yapılıyor.", "Depoya Hoşgeldiniz", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
+
+
             }
 
             // 1 . Yöntem
@@ -100,12 +113,25 @@ namespace Project1_AdonetPCustomer
             var user = db.SORUMLU.FirstOrDefault(x => x.UserName == txtname.Text && x.Password == txtpassword.Text);
             if (user != null)
             {
-                Form1 fr = new Form1();
-                fr.Show();
-                this.Hide();
+                if (user != null)
+                {
+                    txtname.BackColor = Color.LightGreen;
+                    txtpassword.BackColor = Color.LightGreen;
+                    this.Refresh();
+                    System.Threading.Thread.Sleep(500);
+                    Form1 fr = new Form1();
+                    fr.Show();
+                    this.Hide();
+                }
             }
             else
             {
+                this.Refresh();
+                System.Threading.Thread.Sleep(500);
+                txtname.BackColor = Color.DarkRed;
+                txtpassword.BackColor = Color.DarkRed;
+                txtpassword.ForeColor = Color.Yellow;
+                txtname.ForeColor = Color.Yellow;
                 errorSyc++;
                 switch (errorSyc)
                 {
